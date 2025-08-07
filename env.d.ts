@@ -52,3 +52,8 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv
 }
+
+// 定义环境变量的类型
+type EnvType = {
+  [key in keyof ImportMetaEnv]: ImportMetaEnv[key]
+}
