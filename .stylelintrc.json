@@ -1,0 +1,17 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-html"],
+  "plugins": ["stylelint-scss"],
+  "overrides": [
+    {
+      "files": ["*.vue", "**/*.vue"],
+      "customSyntax": "postcss-html"
+    }
+  ],
+  "rules": {
+    "declaration-no-important": true,
+    "selector-max-id": 1,
+    "no-empty-source": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "scss/at-rule-no-unknown": true
+  }
+}
