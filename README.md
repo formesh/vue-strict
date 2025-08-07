@@ -1,5 +1,7 @@
 # vue-strict
 
+一个具备完善工程化配置的Vue 3项目。
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup
