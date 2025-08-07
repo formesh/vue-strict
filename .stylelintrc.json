@@ -11,6 +11,7 @@
     "declaration-no-important": true,
     "selector-max-id": 1,
     "no-empty-source": null,
+    "block-no-empty": true,
     "font-family-no-missing-generic-family-keyword": null,
     "scss/at-rule-no-unknown": true
   }
