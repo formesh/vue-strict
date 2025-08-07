@@ -23,12 +23,9 @@
     "commit": "cz"
   },
   "lint-staged": {
-    "*.{js,ts,vue}": [
+    "*.{js,ts,vue,scss,css}": [
       "eslint . --fix",
-      "prettier --write"
-    ],
-    "*.{scss,css}": [
-      "stylelint --fix",
+      "stylelint \"src/**/*.{vue,scss,css}\" --fix",
       "prettier --write"
     ]
   },
@@ -58,6 +55,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "commitizen": "^4.3.1",
+    "cspell": "^9.2.0",
     "cz-git": "^1.12.0",
     "eslint": "^9.31.0",
     "eslint-plugin-oxlint": "~1.8.0",
