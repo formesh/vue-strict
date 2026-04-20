@@ -127,6 +127,16 @@ VITE_OPEN=true                     # 是否自动打开浏览器
 VITE_HMR=true                      # 是否启用热更新
 ```
 
+### Windows（PowerShell）示例
+
+```powershell
+# 复制环境变量模板
+Copy-Item .\apps\web\.env.local.example .\apps\web\.env.local
+
+# 运行全链路检查
+pnpm ci:check
+```
+
 ## 🏗️ 项目结构
 
 ```
@@ -177,6 +187,7 @@ type(scope): description
 ```
 
 常用类型：
+
 - `feat`: 新功能
 - `fix`: 修复bug
 - `docs`: 文档更新
