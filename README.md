@@ -1,8 +1,6 @@
-# vue-strict
+# vue-strict monorepo
 
-一个具备完善工程化配置的Vue 3项目。
-
-This template should help get you started developing with Vue 3 in Vite.
+一个基于 pnpm workspace + Turborepo 的 Vue 3 monorepo 工程。
 
 ## 🚀 技术栈
 
@@ -58,41 +56,36 @@ pnpm dev
 ### 开发相关
 
 ```bash
-# 启动开发服务器
+# 启动 web 应用
 pnpm dev
 
-# 构建生产版本
+# 构建全部包和应用
 pnpm build
 
-# 预览生产构建
+# 预览 web 应用
 pnpm preview
 
-# 类型检查
+# 类型检查（全仓）
 pnpm type-check
 ```
 
 ### 测试相关
 
 ```bash
-# 运行单元测试
+# 运行 web 单元测试
 pnpm test:unit
 
-# 运行端到端测试
+# 运行 web 端到端测试
 pnpm test:e2e
 ```
 
 ### 代码质量
 
 ```bash
-# 运行所有代码检查
+# 运行全仓代码检查
 pnpm lint
 
-# 单独运行各种检查
-pnpm lint:eslint    # ESLint 检查
-pnpm lint:stylelint # Stylelint 检查
-pnpm lint:oxlint    # Oxlint 检查
-
-# 代码格式化
+# web 包代码格式化
 pnpm format
 ```
 
@@ -138,25 +131,22 @@ VITE_HMR=true                      # 是否启用热更新
 
 ```
 vue-strict/
-├── .husky/                 # Git hooks
-├── .vscode/               # VS Code 配置
-├── e2e/                   # 端到端测试
-├── public/                # 静态资源
-├── src/
-│   ├── assets/           # 资源文件
-│   ├── components/       # 组件
-│   ├── router/           # 路由配置
-│   ├── stores/           # 状态管理
-│   ├── views/            # 页面组件
-│   ├── App.vue           # 根组件
-│   └── main.ts           # 入口文件
-├── .env*                  # 环境变量文件
-├── .gitignore            # Git 忽略文件
-├── .nvmrc                # Node 版本文件
-├── package.json          # 项目配置
-├── tsconfig.json         # TypeScript 配置
-├── vite.config.ts        # Vite 配置
-└── vitest.config.ts      # Vitest 配置
+├── .husky/                    # Git hooks
+├── apps/
+│   └── web/                   # Vue3 主应用
+│       ├── src/
+│       ├── public/
+│       ├── e2e/
+│       ├── package.json
+│       └── vite.config.ts
+├── packages/
+│   ├── utils/                 # 工具函数包
+│   ├── ai/                    # AI/策略逻辑包
+│   └── ui/                    # 可复用 UI 逻辑包
+├── package.json               # monorepo 根配置
+├── pnpm-workspace.yaml
+├── turbo.json
+└── tsconfig.base.json
 ```
 
 ## 🔍 代码质量保证
@@ -167,7 +157,7 @@ vue-strict/
 - **Stylelint**: CSS/SCSS 样式检查
 - **Oxlint**: 高性能代码检查
 - **Prettier**: 代码格式化
-- **cspell**: 拼写检查
+- **Turborepo**: 任务调度与缓存
 
 ### Git Hooks
 
