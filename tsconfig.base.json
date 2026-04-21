@@ -14,17 +14,6 @@
     "isolatedModules": true,
     "declaration": true,
     "declarationMap": true,
-    "baseUrl": ".",
-    "paths": {
-      "@repo/utils": [
-        "packages/utils/src/index.ts"
-      ],
-      "@repo/ai": [
-        "packages/ai/src/index.ts"
-      ],
-      "@repo/ui": [
-        "packages/ui/src/index.ts"
-      ]
-    }
+    "baseUrl": "."
   }
 }

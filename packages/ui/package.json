@@ -31,6 +31,8 @@
     "build:types": "vue-tsc -p tsconfig.json --declaration --emitDeclarationOnly",
     "build:assets": "node ./scripts/copy-vue-assets.mjs",
     "build": "pnpm clean && pnpm build:js && pnpm build:types && pnpm build:assets",
-    "type-check": "vue-tsc -p tsconfig.json --noEmit"
+    "type-check": "vue-tsc -p tsconfig.json --noEmit",
+    "lint": "oxlint src --deny correctness --ignore-path ../../.gitignore",
+    "test:unit": "vitest run --passWithNoTests"
   }
 }

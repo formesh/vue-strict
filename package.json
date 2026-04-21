@@ -12,7 +12,7 @@
     "build": "turbo run build",
     "preview": "turbo run preview --filter=@repo/web",
     "type-check": "turbo run type-check",
-    "test:unit": "turbo run test:unit --filter=@repo/web",
+    "test:unit": "turbo run test:unit",
     "test:e2e": "turbo run test:e2e --filter=@repo/web",
     "lint": "turbo run lint",
     "ci:check": "pnpm type-check && pnpm lint && pnpm test:unit && pnpm build",
@@ -31,7 +31,9 @@
     "commitizen": "^4.3.1",
     "cz-git": "^1.12.0",
     "husky": "^9.1.7",
-    "turbo": "^2.5.4"
+    "oxlint": "~1.8.0",
+    "turbo": "^2.5.4",
+    "vitest": "^3.2.4"
   },
   "volta": {
     "node": "22.17.1"

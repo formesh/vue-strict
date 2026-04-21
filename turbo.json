@@ -45,6 +45,7 @@
       ],
       "inputs": [
         "src/**",
+        "test/**",
         "package.json",
         "vitest.config.*"
       ],
