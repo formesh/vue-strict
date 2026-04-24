@@ -1,24 +1,43 @@
 # vue-strict monorepo
 
-一个基于 pnpm workspace + Turborepo 的 Vue 3 monorepo 工程。
+一个基于 pnpm workspace + Turborepo 的 Vue 3 monorepo 工程，旨在提供严谨、高效的前端开发环境。
 
 ## 🚀 技术栈
 
-- **框架**: Vue 3 + TypeScript
-- **构建工具**: Vite (Rolldown)
-- **状态管理**: Pinia
-- **路由**: Vue Router
-- **样式**: Sass/SCSS
-- **测试**: Vitest + Playwright
-- **代码质量**: ESLint + Prettier + Stylelint + Oxlint
-- **提交规范**: Commitizen + Commitlint + Husky
-- **版本管理**: Volta + pnpm
+- **框架**: [Vue 3](https://vuejs.org/) + [TypeScript](https://www.typescriptlang.org/)
+- **构建工具**: [Vite](https://vitejs.dev/)
+- **Monorepo 管理**: [pnpm Workspace](https://pnpm.io/workspaces) + [Turborepo](https://turbo.build/)
+- **UI 组件库**: [Element Plus](https://element-plus.org/)
+- **状态管理**: [Pinia](https://pinia.vuejs.org/)
+- **路由**: [Vue Router](https://router.vuejs.org/)
+- **样式**: Sass/SCSS + [Stylelint](https://stylelint.io/)
+- **测试**: [Vitest](https://vitest.dev/) + [Playwright](https://playwright.dev/)
+- **代码质量**: [ESLint](https://eslint.org/) + [Prettier](https://prettier.io/) + [Oxlint](https://oxc.rs/docs/guide/usage/linter.html) + [CSpell](https://cspell.org/)
+- **提交规范**: [Commitizen](https://github.com/commitizen/cz-git) + [Commitlint](https://commitlint.js.org/) + [Husky](https://typicode.github.io/husky/)
+- **版本管理**: [Volta](https://volta.sh/)
+
+## 📂 项目结构
+
+```text
+.
+├── apps/
+│   └── web/                # Vue 3 应用主程序
+├── packages/
+│   ├── ai/                 # AI/策略相关逻辑封装
+│   ├── ui/                 # 共享 UI 组件库 (Vue + TSX)
+│   └── utils/              # 共享工具函数库
+├── .husky/                 # Git Hooks 配置
+├── .vscode/                # VSCode 编辑器配置
+├── package.json            # 根项目配置及全仓脚本
+├── pnpm-workspace.yaml     # pnpm workspace 配置
+└── turbo.json              # Turborepo 任务流配置
+```
 
 ## 📋 环境要求
 
-- Node.js: >= 22.17.1
-- pnpm: >= 10.13.1
-- 推荐使用 [Volta](https://volta.sh/) 进行版本管理
+- **Node.js**: >= 22.17.1
+- **pnpm**: >= 10.13.1
+- 推荐使用 [Volta](https://volta.sh/) 进行版本管理，确保团队开发环境一致。
 
 ## 🛠️ 开发环境设置
 
@@ -37,57 +56,42 @@ pnpm install
 
 ### 3. 环境变量配置
 
-复制环境变量模板文件：
+项目支持多环境配置，主要位于 `apps/web` 目录下。复制模板文件并根据需要修改：
 
-```bash
-cp .env.local.example .env.local
+```powershell
+# Windows (PowerShell)
+Copy-Item .\apps\web\.env.local.example .\apps\web\.env.local
+
+# Linux/macOS
+cp apps/web/.env.local.example apps/web/.env.local
 ```
-
-根据需要修改 `.env.local` 中的配置。
 
 ### 4. 启动开发服务器
 
 ```bash
+# 启动 web 应用开发环境
 pnpm dev
 ```
 
 ## 📝 可用脚本
 
-### 开发相关
+### 核心命令
 
-```bash
-# 启动 web 应用
-pnpm dev
-
-# 构建全部包和应用
-pnpm build
-
-# 预览 web 应用
-pnpm preview
-
-# 类型检查（全仓）
-pnpm type-check
-```
+| 命令              | 说明                                                      |
+| :---------------- | :-------------------------------------------------------- |
+| `pnpm dev`        | 启动 `web` 应用的开发服务器                               |
+| `pnpm build`      | 使用 Turbo 构建全仓所有应用和包                           |
+| `pnpm type-check` | 运行全仓 TypeScript 类型检查                              |
+| `pnpm lint`       | 运行全仓 Lint 检查（ESLint, Stylelint, Oxlint）           |
+| `pnpm format`     | 格式化全仓代码                                            |
+| `pnpm ci:check`   | 运行 CI 流程中的所有检查（类型检查 + Lint + 测试 + 构建） |
 
 ### 测试相关
 
-```bash
-# 运行 web 单元测试
-pnpm test:unit
-
-# 运行 web 端到端测试
-pnpm test:e2e
-```
-
-### 代码质量
-
-```bash
-# 运行全仓代码检查
-pnpm lint
-
-# web 包代码格式化
-pnpm format
-```
+| 命令             | 说明                               |
+| :--------------- | :--------------------------------- |
+| `pnpm test:unit` | 运行全仓单元测试 (Vitest)          |
+| `pnpm test:e2e`  | 运行 `web` 端到端测试 (Playwright) |
 
 ### 提交代码
 
@@ -95,139 +99,33 @@ pnpm format
 # 添加文件到暂存区
 git add .
 
-# 使用交互式提交
+# 使用交互式提交工具，确保符合 Conventional Commits 规范
 pnpm commit
-```
-
-## 🔧 环境变量
-
-项目支持多环境配置：
-
-- `.env` - 通用配置
-- `.env.development` - 开发环境配置
-- `.env.production` - 生产环境配置
-- `.env.local` - 本地个人配置（不会被提交）
-
-### 主要环境变量
-
-```bash
-# 应用配置
-VITE_APP_TITLE=Vue Strict          # 应用标题
-VITE_API_BASE_URL=http://localhost:3000/api  # API 基础URL
-VITE_APP_VERSION=1.0.0             # 应用版本
-
-# 功能开关
-VITE_USE_MOCK=false                # 是否使用 Mock 数据
-VITE_USE_PWA=false                 # 是否启用 PWA
-VITE_DROP_CONSOLE=false            # 是否移除 console
-
-# 开发配置
-VITE_PORT=5173                     # 开发服务器端口
-VITE_OPEN=true                     # 是否自动打开浏览器
-VITE_HMR=true                      # 是否启用热更新
-```
-
-### Windows（PowerShell）示例
-
-```powershell
-# 复制环境变量模板
-Copy-Item .\apps\web\.env.local.example .\apps\web\.env.local
-
-# 运行全链路检查
-pnpm ci:check
-```
-
-## 🏗️ 项目结构
-
-```
-vue-strict/
-├── .husky/                    # Git hooks
-├── apps/
-│   └── web/                   # Vue3 主应用
-│       ├── src/
-│       ├── public/
-│       ├── e2e/
-│       ├── package.json
-│       └── vite.config.ts
-├── packages/
-│   ├── utils/                 # 工具函数包
-│   ├── ai/                    # AI/策略逻辑包
-│   └── ui/                    # 可复用 UI 逻辑包
-├── package.json               # monorepo 根配置
-├── pnpm-workspace.yaml
-├── turbo.json
-└── tsconfig.base.json
 ```
 
 ## 🔍 代码质量保证
 
-### 代码检查工具
-
-- **ESLint**: JavaScript/TypeScript 代码检查
-- **Stylelint**: CSS/SCSS 样式检查
-- **Oxlint**: 高性能代码检查
-- **Prettier**: 代码格式化
-- **Turborepo**: 任务调度与缓存
-
-### Git Hooks
-
-- **pre-commit**: 提交前运行代码检查和格式化
-- **commit-msg**: 验证提交信息格式
-
 ### 提交规范
 
-使用 [Conventional Commits](https://www.conventionalcommits.org/) 规范：
+项目强制执行 [Conventional Commits](https://www.conventionalcommits.org/) 规范，主要通过以下工具实现：
 
-```
-type(scope): description
+- **Husky**: 管理 Git Hooks（pre-commit, commit-msg）。
+- **Commitlint**: 校验提交信息格式。
+- **Commitizen (cz-git)**: 提供交互式提交界面。
 
-[optional body]
+### 代码检查
 
-[optional footer]
-```
-
-常用类型：
-
-- `feat`: 新功能
-- `fix`: 修复bug
-- `docs`: 文档更新
-- `style`: 代码格式调整
-- `refactor`: 代码重构
-- `test`: 测试相关
-- `chore`: 构建过程或辅助工具的变动
-
-## 🚀 部署
-
-### 构建生产版本
-
-```bash
-pnpm build
-```
-
-构建产物将生成在 `dist` 目录中。
-
-### 预览构建结果
-
-```bash
-pnpm preview
-```
+- **pre-commit**: 在提交前自动运行 Oxlint 和 Prettier 检查。
+- **ci:check**: 在持续集成环境中运行全方位的代码质量检查。
 
 ## 🤝 贡献指南
 
-1. Fork 项目
-2. 创建功能分支 (`git checkout -b feature/AmazingFeature`)
-3. 提交更改 (`pnpm commit`)
-4. 推送到分支 (`git push origin feature/AmazingFeature`)
-5. 创建 Pull Request
+1. **功能开发**:
+   - 新的 UI 组件建议在 `packages/ui` 中开发。
+   - 通用工具函数建议在 `packages/utils` 中添加。
+2. **分支管理**: 建议使用 `feature/xxx` 或 `fix/xxx` 命名分支。
+3. **提交代码**: 请务必使用 `pnpm commit` 提交，以保证 Git Log 的清晰和规范。
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
-
-## 🙏 致谢
-
-- [Vue.js](https://vuejs.org/)
-- [Vite](https://vitejs.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Pinia](https://pinia.vuejs.org/)
-- [Vue Router](https://router.vuejs.org/)
+本项目采用 [MIT](LICENSE) 许可证。
