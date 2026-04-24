@@ -11,8 +11,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@repo/ui': fileURLToPath(new URL('../../packages/ui/src', import.meta.url)),
-      '@repo/utils': fileURLToPath(new URL('../../packages/utils/src', import.meta.url)),
-      '@repo/ai': fileURLToPath(new URL('../../packages/ai/src', import.meta.url)),
+      '@repo/utils': fileURLToPath(new URL('../../packages/utils/src/index.ts', import.meta.url)),
+      '@repo/ai': fileURLToPath(new URL('../../packages/ai/src/index.ts', import.meta.url)),
     },
   },
   server: {

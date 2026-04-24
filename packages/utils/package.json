@@ -20,5 +20,9 @@
     "type-check": "tsc -p tsconfig.json --noEmit",
     "lint": "oxlint src --deny correctness --ignore-path ../../.gitignore",
     "test:unit": "vitest run"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.13.7",
+    "vue": "^3.5.0"
   }
 }

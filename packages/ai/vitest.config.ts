@@ -8,7 +8,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@repo/utils': fileURLToPath(new URL('../utils/src', import.meta.url)),
+      '@repo/utils': fileURLToPath(new URL('../utils/src/index.ts', import.meta.url)),
     },
   },
 })
