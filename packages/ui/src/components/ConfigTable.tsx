@@ -1,8 +1,6 @@
-// ConfigTable.tsx
 import { defineComponent, type PropType, type VNodeChild } from 'vue'
 import { ElTable, ElTableColumn } from 'element-plus'
 
-// 定义列配置类型，支持自定义渲染
 interface TableColumn<T = Record<string, any>> {
   label: string
   prop?: keyof T
@@ -15,11 +13,11 @@ export default defineComponent({
 
   props: {
     data: {
-      type: Array as PropType<Record<string, any>[]>,
+      type: Array as PropType<any[]>,
       required: true,
     },
     columns: {
-      type: Array as PropType<TableColumn[]>,
+      type: Array as PropType<TableColumn<any>[]>,
       required: true,
     },
   },
@@ -36,13 +34,10 @@ export default defineComponent({
           >
             {{
               default: ({ row }: { row: Record<string, any> }) => {
-                // 优先使用自定义渲染
                 if (column.render) {
                   return column.render(row)
                 }
-
-                // 默认展示 prop 对应值
-                return column.prop ? row[column.prop] : null
+                return column.prop ? row[column.prop as any] : null
               },
             }}
           </ElTableColumn>

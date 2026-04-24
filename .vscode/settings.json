@@ -2,6 +2,9 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     ".env": ".env.*",
+    "*.js": "${capture}.d.ts, ${capture}.d.ts.map",
+    "*.tsx": "${capture}.ts, ${capture}.jsx, ${capture}.d.ts, ${capture}.d.ts.map",
+    "*.jsx": "${capture}.ts, ${capture}.d.ts, ${capture}.d.ts.map",
     "tsconfig.json": "tsconfig.*.json, env.d.ts",
     "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
     "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .eslint*, eslint*, .oxlint*, oxlint*, .prettier*, prettier*, .editorconfig, .stylelintrc.*, cspell.config.*"

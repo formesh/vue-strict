@@ -8,7 +8,7 @@
     "pnpm": ">=10.13.1"
   },
   "scripts": {
-    "dev": "turbo run dev --filter=@repo/web",
+    "dev": "turbo run dev --filter=@repo/web...",
     "build": "turbo run build",
     "preview": "turbo run preview --filter=@repo/web",
     "type-check": "turbo run type-check",

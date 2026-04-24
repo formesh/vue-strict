@@ -19,14 +19,17 @@
     "dist"
   ],
   "peerDependencies": {
+    "element-plus": "^2.13.7",
     "vue": "^3.5.0"
   },
   "devDependencies": {
+    "npm-run-all2": "^8.0.4",
     "typescript": "~5.8.0",
     "vue-tsc": "^3.0.4"
   },
   "scripts": {
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
+    "dev": "run-p build:assets \"build:js --watch\" \"build:types --watch\"",
     "build:js": "tsc -p tsconfig.build.json",
     "build:types": "vue-tsc -p tsconfig.json --declaration --emitDeclarationOnly",
     "build:assets": "node ./scripts/copy-vue-assets.mjs",

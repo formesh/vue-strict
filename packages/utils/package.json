@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./src/index.js",
+  "types": "./src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./src/index.d.ts",
+      "import": "./src/index.js"
     }
   },
   "files": [
@@ -16,13 +16,17 @@
   ],
   "scripts": {
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
-    "build": "pnpm clean && tsc -p tsconfig.json",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsc --build tsconfig.json --watch",
+    "build": "pnpm clean && tsc --build tsconfig.json",
+    "type-check": "tsc --build tsconfig.json --noEmit",
     "lint": "oxlint src --deny correctness --ignore-path ../../.gitignore",
     "test:unit": "vitest run"
   },
   "peerDependencies": {
     "element-plus": "^2.13.7",
     "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3"
   }
 }

@@ -19,9 +19,13 @@
   },
   "scripts": {
     "clean": "node -e \"import('node:fs').then(fs=>fs.rmSync('dist',{recursive:true,force:true}))\"",
-    "build": "pnpm clean && tsc -p tsconfig.json",
-    "type-check": "tsc -p tsconfig.json --noEmit",
+    "dev": "tsc --build tsconfig.json --watch",
+    "build": "pnpm clean && tsc --build tsconfig.json",
+    "type-check": "tsc --build tsconfig.json --noEmit",
     "lint": "oxlint src --deny correctness --ignore-path ../../.gitignore",
     "test:unit": "vitest run"
+  },
+  "devDependencies": {
+    "typescript": "~5.8.3"
   }
 }

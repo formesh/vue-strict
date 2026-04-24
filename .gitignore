@@ -30,6 +30,10 @@ coverage
 *.sln
 *.sw?
 
+# Build and Cache
+.turbo
+.cache
+.eslintcache
 *.tsbuildinfo
 packages/*/src/**/*.js
 packages/*/src/**/*.d.ts
